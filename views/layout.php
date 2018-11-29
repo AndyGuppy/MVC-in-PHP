@@ -14,7 +14,7 @@
               
           <div class='header-logo'> ----  </div>
             <div class = 'header-menu'>
-              <a href='/MVC-in-PHP/'><div class ='button-menu'>Home</div></a>
+              <a href='/'><div class ='button-menu'>Home</div></a>
               <a href='?controller=posts&action=index'><div class ='button-menu'>Posts</div></a>
               <a href='?controller=gallery&action=index'><div class ='button-menu'>Gallery</div></a>
               <a href='?controller=StckAvail&action=index'><div class ='button-menu'>Price List</div></a>

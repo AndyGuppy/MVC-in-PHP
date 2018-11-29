@@ -7,7 +7,6 @@
 
       // we store all the images in a variable
       $images = Gallery::all();
-      // $images = Gallery::all();
       require_once('views/gallery/index.php');
     }
 

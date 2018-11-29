@@ -2,56 +2,52 @@
 
   class UserController {
     
-        public function index() {
+      public function index() {
+        require_once('views/admin/index.php');
+      }
 
-      require_once('views/admin/index.php');
-    }
+      public function adminlogin() {
+        echo "in admincontroller adminlogin section";
+        require_once('views/admin/adminlogin.php');
+      } 
 
+      public function signup() {
+        echo "in admincontroller CreateUser section";
+        require_once('views/admin/signup.php');
+      }
 
-
-
-        public function adminlogin() {
-          echo "in admincontroller adminlogin section";
-      require_once('views/admin/adminlogin.php');
-    }
-
-        public function signup() {
-          echo "in admincontroller CreateUser section";
-
-      require_once('views/admin/signup.php');
-    }
-
-       public function createuser() {
-          if ( isset($_POST['uname']) ) {
+      public function createuser() {
+        if ( isset($_POST['uname']) ) {
           foreach ($_POST as $key) {
             $userdata[] = $key;
           }
           $userdata[]  = "User";
           $user = User::create($userdata);
-          }
-          else {
-            die('Failed to Create User Name');
-          }
-         require_once('views/admin/index.php');
+        }
+        else {
+          die('Failed to Create User Name');
+        }
+        require_once('views/admin/index.php');
       }
 
       public function showuser(){
-          if ( isset($_POST['uname']) ) {
-            foreach ($_POST as $key) {
-              $userdata[] = $key;
-            }
-            $user = User::validate($userdata);
-            if($user == 0 ){
-              echo getcwd();
-              require_once('/admin/index.php');
-            }else{
-              echo "Invalid Username or Password <br><br>";
-              require_once('../admin/views/index.php');
-            }
-            }
-            else {
-              die('Username is required');
-            }
+        if ( isset($_POST['uname']) ) {
+          foreach ($_POST as $key) {
+            $userdata[] = $key;
+          }
+          $user = User::validate($userdata);
+          if($user == 0 ){
+            echo getcwd();
+            require_once('/admin/index.php');
+          }
+          else{
+            echo "Invalid Username or Password <br><br>";
+            require_once('../admin/views/index.php');
+          }
+        }
+        else {
+          die('Username is required');
+        }
         
       }
 // Refactored to above

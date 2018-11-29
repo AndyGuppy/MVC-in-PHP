@@ -42,8 +42,6 @@
    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
 
-      <p><?php require_once('get_ip.php'); ?></p>
-
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Log Out</a></li>
       </ul>

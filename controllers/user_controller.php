@@ -2,51 +2,63 @@
 
   class UserController {
     
-      public function index() {
-        require_once('views/admin/index.php');
-      }
+        public function index() {
 
-      public function adminlogin() {
-        echo "in admincontroller adminlogin section";
-        require_once('views/admin/adminlogin.php');
-      } 
+      require_once('views/admin/index.php');
+    }
 
-      public function signup() {
-        echo "in admincontroller CreateUser section";
-        require_once('views/admin/signup.php');
-      }
 
-      public function createuser() {
-        if ( isset($_POST['uname']) ) {
+
+
+        public function adminlogin() {
+          echo "in admincontroller adminlogin section";
+      require_once('views/admin/adminlogin.php');
+    }
+
+        public function signup() {
+          echo "in admincontroller CreateUser section";
+
+      require_once('views/admin/signup.php');
+    }
+
+       public function createuser() {
+          if ( isset($_POST['uname']) ) {
           foreach ($_POST as $key) {
             $userdata[] = $key;
           }
           $userdata[]  = "User";
           $user = User::create($userdata);
-        }
-        else {
-          die('Failed to Create User Name');
-        }
-        require_once('views/admin/index.php');
+          }
+          else {
+            die('Failed to Create User Name');
+          }
+         require_once('views/admin/index.php');
       }
 
       public function showuser(){
-        if ( isset($_POST['uname']) ) {
-          foreach ($_POST as $key) {
-            $userdata[] = $key;
-          }
-          $user = User::validate($userdata);
-          if($user == 0 ){
-            require_once('../admin/index.php');
-          }
-          else{
-            echo "Invalid Username or Password <br><br>";
-            require_once('../admin/views/index.php');
-          }
-        }
-        else {
-          die('Username is required');
-        }
+          if ( isset($_POST['uname']) ) {
+            foreach ($_POST as $key) {
+              $userdata[] = $key;
+            }
+            $user = User::validate($userdata);
+            if($user == 0 ){
+
+              $path = '/admin/index.php';
+
+              $URL = $_SERVER['SCRIPT_URI'] .'/admin/index.php';
+              if( headers_sent() ) { echo("<script>location.href='$URL'</script>"); }
+                else { header("Location: $URL"); }
+             
+
+
+            }else{
+              echo "Invalid Username or Password <br><br>";
+              require_once(SITE_ROOT.'admin/views/index.php');
+            }
+            }
+            else {
+              die('Username is required');
+            }
         
       }
 // Refactored to above

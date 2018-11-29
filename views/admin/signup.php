@@ -7,7 +7,7 @@
     <p>Please fill in this form to create an account.</p>
     <hr>
 
-     <label for="uname"><b>Userssssname</b></label>
+     <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
@@ -21,7 +21,6 @@
 
       <label for="email"><b>Email Address</b></label>
       <input type="text" placeholder="Enter Email Address" name="emailAdd" required>   
-    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
     <div class="clearfix">
       <button type="button" class="cancelbtn">Cancel</button>

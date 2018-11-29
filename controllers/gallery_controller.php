@@ -12,19 +12,9 @@
     }
 
 
-    public function show() {
-      // we expect a url of form ?controller=posts&action=show&id=x
-      // without an id we just redirect to the error page as we need the post id to find it in the database
-      if (!isset($_GET['id']))
-        return call('pages', 'error');
-
-      // we use the given id to get the right post
-      $image = Gallery::find($_GET['id']);
-      require_once('views/gallery/show.php');
-    }
 
         public function browse() {
-          echo ' in gallaery browse section';
+          echo ' in gallery browse section';
       require_once('views/gallery/preupload.php');
     }
 
@@ -93,12 +83,6 @@
       require_once('views/gallery/upload.php');
     }
 
-    //           public function insertBlob(){
-    //             echo ' in gallaery blob section<br>';
-    //             echo 'upload/'.$_FILES['file_upload']['name'];
-    //             $image = Gallery::insertBlob('upload/'.$_FILES['file_upload']['name'],exif_imagetype($_FILES['file_upload']['tmp_name']));
-    //   require_once('views/gallery/databaseupdated.php');
-    // }
 
   }
 ?>

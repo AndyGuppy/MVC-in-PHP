@@ -25,7 +25,6 @@
       foreach($req->fetchAll() as $image) {
         $list[] = new Gallery($image['Imcode'], $image['Latin_Name'], $image['Species'] , $image['Pathway']);
       }
-      echo 'wew are in model gallery function all -- ' .$List[0];
       return $list;
     }
 

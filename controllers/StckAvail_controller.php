@@ -1,10 +1,10 @@
 <?php
 
-  class PostsController {
+  class StckAvailController {
     public function index() {
       // we store all the posts in a variable
-      // $posts = Post::all();
-      require_once('views/posts/index.php');
+      // $species = StckAvail::all();
+      require_once('views/StckAvail/index.php');
     }
 
     public function show() {
@@ -14,8 +14,10 @@
         return call('pages', 'error');
 
       // we use the given id to get the right post
-      $post = Post::find($_GET['id']);
-      require_once('views/posts/show.php');
+      $specie = StckAvail::find($_GET['id']);
+      // echo $specie->latin_name . ' specie is ';
+      // $image = StckAvail::findallimg($specie->latin_name);
+      require_once('views/StckAvail/show.php');
     }
   }
 ?>

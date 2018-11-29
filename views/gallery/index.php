@@ -1,4 +1,4 @@
-<p>Here is a list of all images:</p>
+<p>Enjoy the Gallery, Click on an Image to enlarge</p>
  <div id="main">
 	<?php foreach($images as $image) { ?>
 
@@ -12,7 +12,8 @@
 
 	<a href="#_" class="lightbox" id="<?php echo $image->imcode ?>">
    		<img src="<?php echo $image->pathway; ?>"/>
-   		<p> Hello </p>
+
+      <p> Lightbox </p>
    	</a>
    </div>
 	</div>

@@ -37,8 +37,7 @@
           }
           $user = User::validate($userdata);
           if($user == 0 ){
-            echo getcwd();
-            require_once('/admin/index.php');
+            require_once('../admin/index.php');
           }
           else{
             echo "Invalid Username or Password <br><br>";

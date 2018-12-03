@@ -9,8 +9,7 @@
 
 
       Private function startsession($userID, $Rank){
-        session_start();
-
+ 
         $_SESSION["user_id"] = $userID;
         $_SESSION["user_rank"] = $Rank;
 
@@ -47,10 +46,9 @@
               $userdata[] = $key;
             }
             $user = User::validate($userdata);
-
+            echo $user[5] . " -- <br>";
             if($user[5] == 'Admin' ){
-              return self::startsession($user[0] , $user[5]);
-              echo "session started";
+             self::startsession($user[0] , $user[5]);
               // ***********************************************************************
               // Dirty Method of changing base URL to Admin section, need to revisit
               $URL = $_SERVER['SCRIPT_URI'] .'/admin/index.php';
@@ -58,7 +56,7 @@
                 else { header("Location: $URL"); }
               // ***********************************************************************
             }elseif($user[5] == 'User' ){
-              return self::startsession($user[0] , $user[5]);
+              self::startsession($user[0] , $user[5]);
               require_once('views/admin/index.php');
 
 

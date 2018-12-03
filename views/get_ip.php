@@ -31,6 +31,9 @@ function validate_ip($ip)
     return true;
 }
 
+
+// $ip2 = IP::get_IP();
+
 $ip = get_ip_address();
 
 $arr = (array)json_decode( file_get_contents("http://ip-api.com/json/" . $ip), true);
@@ -39,7 +42,7 @@ $flagid = strtolower($arr['countryCode']).'.png';
 
 
 echo '<img src="/flags/'. $flagid .'" alt="Smiley face" height="14" width="22">';
-
+// echo " -------------<br>" . $ip2 . " -------------<br>";
 
 
 if($_SESSION["user_id"] <> ""){
@@ -50,6 +53,4 @@ else{
 
  echo 'Welcome Guest from ' . $arr['city']. ', ' . $arr['regionName'] . '.... Your IP address is ' . get_ip_address() . '<br />';   
 }
-
-
 ?>

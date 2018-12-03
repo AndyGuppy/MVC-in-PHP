@@ -10,8 +10,8 @@
   <body>
 
     <div class="page">
-
-              <?php require_once('get_ip.php'); ?>
+<!--               <?php require_once('/models/IP.php'); ?>
+              <?php require_once('get_ip.php'); ?> -->
               
           <div class='header-logo'> ----  </div>
             <div class = 'header-menu'>

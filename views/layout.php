@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="styles/lightbox.css" />
     <link rel="stylesheet" type="text/css" href="styles/admin.css" />
   </head>
+
   <body>
 
     <div class="page">

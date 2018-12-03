@@ -8,7 +8,13 @@
     }
 
 
+      Private function startsession($userID, $Rank){
+        session_start();
 
+        $_SESSION["user_id"] = $userID;
+        $_SESSION["user_rank"] = $Rank;
+
+      }
 
         public function adminlogin() {
           echo "in admincontroller adminlogin section";
@@ -41,19 +47,24 @@
               $userdata[] = $key;
             }
             $user = User::validate($userdata);
-            if($user == 0 ){
 
-              $path = '/admin/index.php';
-
+            if($user[5] == 'Admin' ){
+              return self::startsession($user[0] , $user[5]);
+              echo "session started";
+              // ***********************************************************************
+              // Dirty Method of changing base URL to Admin section, need to revisit
               $URL = $_SERVER['SCRIPT_URI'] .'/admin/index.php';
               if( headers_sent() ) { echo("<script>location.href='$URL'</script>"); }
                 else { header("Location: $URL"); }
-             
+              // ***********************************************************************
+            }elseif($user[5] == 'User' ){
+              return self::startsession($user[0] , $user[5]);
+              require_once('views/admin/index.php');
 
 
             }else{
               echo "Invalid Username or Password <br><br>";
-              require_once(SITE_ROOT.'admin/views/index.php');
+              require_once('views/admin/index.php');
             }
             }
             else {
@@ -61,30 +72,6 @@
             }
         
       }
-// Refactored to above
-        // public function createuser() {
-        //   echo "in admincontroller newuser section";
-        //   if ( isset($_POST['uname']) ) {
-        //   $username = $_POST['uname'];
-        //   $password = $_POST['psw'];
-        //   $firstname = $_POST['firstName'];
-        //   $lastname = $_POST['lastName'];
-        //   $emailaddress = $_POST['emailAdd'];
-        //   $rank = "User";
-
-        //   echo "UserID - " . $username . "<br>";
-        //   echo "Password - " . $password. "<br>";
-        //   echo "Name - " . $firstname . " " . $lastname . "<br>";
-        //   echo "Email - " . $emailaddress . "<br>";
-        //   echo "Rank - " . $rank . "<br>";
-
-        //   $user = User::create($username, $password, $firstname, $lastname, $emailaddress, $rank);
-        //   }
-        //   else {
-        //     die('Failed to Create username.');
-        //   }
-          
-        
 
 
   }

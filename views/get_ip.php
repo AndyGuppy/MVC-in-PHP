@@ -31,9 +31,25 @@ function validate_ip($ip)
     return true;
 }
 
-// Get the client ip address
-$ipaddress = $_SERVER['REMOTE_ADDR'];
+$ip = get_ip_address();
 
-echo 'Your IP address is ' . $ipaddress . '<br />';
-// echo 'Your IP address is ' . get_ip_address() . '<br />';
+$arr = (array)json_decode( file_get_contents("http://ip-api.com/json/" . $ip), true);
+
+$flagid = strtolower($arr['countryCode']).'.png';
+
+
+echo '<img src="/flags/'. $flagid .'" alt="Smiley face" height="14" width="22">';
+
+
+
+if($_SESSION["user_id"] <> ""){
+
+ echo 'Hello ' . $_SESSION["user_id"] . ' from ' . $arr['city']. ', ' . $arr['regionName'] . '.... Your IP address is ' . get_ip_address() . '<br />';   
+}
+else{
+
+ echo 'Welcome Guest from ' . $arr['city']. ', ' . $arr['regionName'] . '.... Your IP address is ' . get_ip_address() . '<br />';   
+}
+
+
 ?>

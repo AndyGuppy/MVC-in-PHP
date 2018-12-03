@@ -39,13 +39,14 @@
       $username = $userdata[0];
       $usrPwd = $userdata[1];
       $password ="";
-      $req = $db->prepare('SELECT Passwd FROM users WHERE UserID ="' . $username . '"');
+      $req = $db->prepare('SELECT * FROM users WHERE UserID ="' . $username . '"');
       // the query was prepared, now we replace :id with our actual $id value
       $req->execute(array('Passwd' => $password));
       $user = $req->fetch();
-
+      // echo "MD5 Password from entry -- " . md5($usrPwd) . "<br>";
+      // echo "MD5 Password from dbase -- " . $user['Passwd'] . "<br>";
       if (md5($usrPwd) == $user['Passwd']) {
-        return 0;
+        return $user;
       } else {
 
         return 1;

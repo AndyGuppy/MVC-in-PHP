@@ -45,13 +45,13 @@
           }
 
         // Check if the file exists
-        if(file_exists('upload/' . $_FILES['file_upload']['name'])){
+        if(file_exists('../upload/' . $_FILES['file_upload']['name'])){
             die('File with that name already exists.');
           }
 
         // Upload file
 
-        if(!move_uploaded_file($_FILES['file_upload']['tmp_name'], 'upload/' . $_FILES['file_upload']['name'])){
+        if(!move_uploaded_file($_FILES['file_upload']['tmp_name'], '../upload/' . $_FILES['file_upload']['name'])){
             die('Error uploading file - check destination is writeable.');
           }
          
@@ -59,7 +59,7 @@
           $maxDim = 800;
           $file_name = $_FILES['file_upload']['name'];
           echo $file_name . "<br>";
-          list($width, $height, $type, $attr) = getimagesize( 'upload/' . $file_name );
+          list($width, $height, $type, $attr) = getimagesize( '../upload/' . $file_name );
 
           if ( $width > $maxDim || $height > $maxDim ) {
             echo "Image Width : ". $width . " - Image Height : " . $height . "<br>";
@@ -73,15 +73,15 @@
                 $new_height = $maxDim;
               }
               echo "Image Width : ". $new_width . " - Image Height : " . $new_height . "<br>";
-              $src = imagecreatefromstring( file_get_contents( 'upload/' . $file_name ) );
+              $src = imagecreatefromstring( file_get_contents( '../upload/' . $file_name ) );
               $dst = imagecreatetruecolor( $new_width, $new_height );
               imagecopyresampled( $dst, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height );
               imagedestroy( $src );
               imagejpeg( $dst, $target_filename ); // adjust format as needed
               imagedestroy( $dst );
-              $filename = 'upload/'.$target_filename;
+              $filename = '../upload/'.$target_filename;
             }else{
-              $filename = 'upload/'.$_FILES['file_upload']['name'];
+              $filename = '../upload/'.$_FILES['file_upload']['name'];
           }
           
         

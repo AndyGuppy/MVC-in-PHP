@@ -57,10 +57,20 @@
     <div class="col-sm-3 sidenav">
       <h4>Admin Section</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Home</a></li>
-        <li><a href="#section2">Gallery</a></li>
-        <li><a href="#section3">Posts</a></li>
-        <li><a href='?controller=user&action=index'>Users</a></li>
+
+       <li class="active"><a href="#">Home</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gallery<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="?controller=gallery&action=index">View All</a></li>
+        <li><a href="?controller=gallery&action=browse">Add Image</a></li>
+        <li><a href="#">Add Notes</a></li>                        
+      </ul>
+    </li>
+    <li><a href="#">Posts</a></li>
+    <li><a href="?controller=user&action=index'">Users</a></li>
+
+
       </ul><br>
       
       <div class="input-group">

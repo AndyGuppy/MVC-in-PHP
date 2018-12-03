@@ -2,33 +2,36 @@
   class User {
     // we define 6 attributes
     // they are public so that we can access them using $image->category_id directly
-    public $userName;
+    public $username;
     public $password;
-    public $firstName;
+    public $firstname;
     public $lastName;
     public $emailAddress;
     public $rank;
     private $element;
  
 
-    public function __construct($userName, $password, $firstName, $lastName, $emailAddress, $rank) {
+    public function __construct($userName, $password, $FirstName, $lastName, $emailAddress, $rank) {
       $this->username = $userName;
-      $this->firstname = $firstName;
+      $this->firstname = $FirstName;
       $this->password  = $password;
       $this->lastName = $lastName;
       $this->email = $emailAddress;
       $this->rank = $rank;
 
+
+
     }
 
     public static function all() {
       $group = [];
-      $db = Gall_Db::getInstance();
+      $db = AdminGall_Db::getInstance();
       $req = $db->query('SELECT * FROM users');
       // we create a list of Post objects from the database results
       foreach($req->fetchAll() as $userdata) {
         $group[] = new User($userdata['UserID'], $userdata['Passwd'], $userdata['FirstName'] , $userdata['lastName'], $userdata['EmailAddress'], $userdata['Rank']);
       }
+
        return $group;
     }
 

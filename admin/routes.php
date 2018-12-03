@@ -13,7 +13,7 @@
         require_once('models/post.php');
         $controller = new PostsController();
       break;
-            case 'user':
+        case 'user':
         require_once('models/user.php');
         $controller = new UserController();
 
